@@ -3,7 +3,7 @@ services:
     image: mongo:7.0-jammy
     ports:
       - "27017:27017"
-    networks: # adding network
+    networks:
       - marsai-network
     volumes:
       - mongo-data:/data/db
@@ -13,14 +13,15 @@ services:
     container_name: marsai-app-container
     build:
       context: .
-    volumes:
-      - ./db.json:/app/db.json
     ports:
       - "3000:3000"
     networks:
       - marsai-network
-    env_file:
-      - ./.env
+    environment:
+      - BOT_TOKEN=8002864227:AAEXEploUo89MeuyYiUxcFv4aCW3tosfd_k
+      - RPC_TOKEN=lShJFo-23_TfZrrZWaTQT-j7V9b67UfG
+      - PORT=3000
+      - NODE_ENV=development
     restart: on-failure
     depends_on:
       - mongo
