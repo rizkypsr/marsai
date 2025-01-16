@@ -1,0 +1,35 @@
+{
+    "name": "marsai-bot",
+    "type": "module",
+    "version": "1.0.0",
+    "exports": "./src/index.js",
+    "author": "Rizky PSR",
+    "devDependencies": {
+        "@types/debug": "^4.1.6",
+        "@types/node": "^16.0.0",
+        "@vercel/ncc": "^0.38.3",
+        "debug": "^4.3.1",
+        "nodemon": "^2.0.9",
+        "prettier": "^2.3.2",
+        "ts-node": "^10.0.0",
+        "typescript": "^4.7.0"
+    },
+    "scripts": {
+        "dev": "DEBUG=bot* dotenv -- nodemon -e ts -x ts-node src/index.ts",
+        "start": "dotenv --env .env.production -- node dist/index.js",
+        "build": "ncc build src/index.ts -o dist -m",
+        "prettier": "prettier --write 'src/**/*.ts'"
+    },
+    "dependencies": {
+        "@telegraf/entity": "^0.5.0",
+        "@types/mongoose": "^5.11.97",
+        "alchemy-sdk": "^3.5.0",
+        "dotenv-cli": "^8.0.0",
+        "ethers": "^6.13.5",
+        "mongoose": "^8.9.5",
+        "telegraf": "^4.16.3"
+    },
+    "engines": {
+        "node": ">=18"
+    }
+}
